@@ -5,9 +5,30 @@
 </head>
 <body>
     <h1>{{ card.name }} - Details</h1>
-    <p>Due Date: {{ card.due_date }}</p>
-    <p>Minimum Payment: ${{ card.min_payment }}</p>
-    <p>Status: {{ 'Paid' if card.paid else 'Not Paid' }}</p>
+    <p><strong>Due Date:</strong> {{ card.due_date }}</p>
+    <p><strong>Minimum Payment:</strong> ${{ card.min_payment }}</p>
+    <p><strong>Status:</strong> {{ "Paid" if card.paid else "Not Paid" }}</p>
+
+    <h2>Update Card Details</h2>
+    <form action="/update_card/{{ card_id }}" method="POST">
+        <label for="due_date">New Due Date:</label>
+        <input type="date" id="due_date" name="due_date" value="{{ card.due_date }}" required>
+        <br>
+
+        <label for="min_payment">New Minimum payment:</label>
+        <input type="int" id="min_payment" name="min_payment" value="{{ card.min_payment }}" required>
+        <br>
+
+        <label for="status">Payment Status:</label>
+        <select id="status" name="status">
+            <option value="paid" {% if card.paid %}selected{% endif %}>Paid</option>
+            <option value="not_paid" {% if not card.paid %}selected{% endif %}>Not Paid</option>
+        </select>
+        <br>
+
+        <button type="submit">Update Card</button>
+    </form>
+
     <a href="/cards">Back to Cards List</a>
 </body>
 </html>
