@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Card List</title>
+</head>
+<body>
+    <h1>All Credit Cards</h1>
+    <ul>
+        {% for card in cards %}
+            <li>
+                <a href="/card/{{ loop.index0 }}">{{ card.name }} - Due Date: {{ card.due_date }} - Min Payment: ${{ card.min_payment }} - Status: {{ 'Paid' if card.paid else 'Not Paid' }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

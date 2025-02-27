@@ -14,9 +14,11 @@ if __name__ == '__main__':
 #card details
 
 cards = [
-    {"name": "Card 1", "due_date": "2025-03-01", "min_payment": 100, "paid": False},
-    {"name": "Card 2", "due_date": "2025-03-05", "min_payment": 200, "paid": True},
-    {"name": "Card 3", "due_date": "2025-03-10", "min_payment": 150, "paid": False}
+    {"name": "CIBC", "due_date": "2025-03-01", "min_payment": 100, "paid": False},
+    {"name": "Neo Hudson", "due_date": "2025-03-05", "min_payment": 200, "paid": True},
+    {"name": "Tims", "due_date": "2025-03-10", "min_payment": 150, "paid": False},
+    {"name": "Triangle", "due_date": "2025-03-10", "min_payment": 150, "paid": False},
+    {"name": "Walmart", "due_date": "2025-03-10", "min_payment": 150, "paid": False}
 ]
 
 

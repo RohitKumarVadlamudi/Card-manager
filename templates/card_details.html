@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ card.name }} Details</title>
+</head>
+<body>
+    <h1>{{ card.name }} - Details</h1>
+    <p>Due Date: {{ card.due_date }}</p>
+    <p>Minimum Payment: ${{ card.min_payment }}</p>
+    <p>Status: {{ 'Paid' if card.paid else 'Not Paid' }}</p>
+    <a href="/cards">Back to Cards List</a>
+</body>
+</html>
