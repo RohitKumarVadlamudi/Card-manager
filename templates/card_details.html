@@ -5,12 +5,16 @@
 </head>
 <body>
     <h1>{{ card.name }} - Details</h1>
+    <h4>Limit: {{ card.Limit }}</h4>
     <p><strong>Due Date:</strong> {{ card.due_date }}</p>
     <p><strong>Minimum Payment:</strong> ${{ card.min_payment }}</p>
     <p><strong>Status:</strong> {{ "Paid" if card.paid else "Not Paid" }}</p>
 
     <h2>Update payment Details</h2>
     <form action="/update_card/{{ card_id }}" method="POST">
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
         <label for="due_date">New Due Date:</label>
         <input type="date" id="due_date" name="due_date" value="{{ card.due_date }}" required>
         <br>

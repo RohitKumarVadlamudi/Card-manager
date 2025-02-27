@@ -5,12 +5,14 @@ app= Flask(__name__)
 #card details
 
 cards = [
-    {"name": "CIBC", "due_date": "2025-03-01", "min_payment": 100, "paid": False},
-    {"name": "Neo Hudson", "due_date": "2025-03-05", "min_payment": 200, "paid": True},
-    {"name": "Tims", "due_date": "2025-03-10", "min_payment": 150, "paid": False},
-    {"name": "Triangle", "due_date": "2025-03-10", "min_payment": 150, "paid": False},
-    {"name": "Walmart", "due_date": "2025-03-10", "min_payment": 150, "paid": False}
+    {"name": "CIBC", "due_date": "2025-03-01", "min_payment": 100, "paid": False, "Limit":3000},
+    {"name": "Neo Hudson", "due_date": "2025-03-05", "min_payment": 200, "paid": True,"Limit":3500},
+    {"name": "Tims", "due_date": "2025-03-10", "min_payment": 150, "paid": False, "Limit":4000},
+    {"name": "Triangle", "due_date": "2025-03-10", "min_payment": 150, "paid": False, "Limit":5500},
+    {"name": "Walmart", "due_date": "2025-03-10", "min_payment": 150, "paid": False, "Limit":4500}
 ]
+
+
 
 
 @app.route('/')
@@ -31,13 +33,19 @@ def card_list():
 @app.route('/update_card/<int:card_id>', methods=['POST'])
 def update_card(card_id):
     card = cards[card_id]
+
+    due_date = request.form.get('due_date')
+    min_payment = request.form.get('min_payment')
     
     # Update due date
     card['due_date'] = request.form['due_date']
-    try:
-    	card['min_payment'] = int(request.form['min_payment'])
-    except:
-    	card['min_payment']=card['min_payment']
+
+
+    #update min payment
+    if not min_payment.isdigit():  # Only check if it's a string that can be converted to int
+        error_message = "Minimum payment must be a number."
+        return render_template('card_details.html', card=card, card_id=card_id, error_message=error_message)
+    
     
     # Update payment status
     status = request.form['status']
