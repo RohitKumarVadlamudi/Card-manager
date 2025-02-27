@@ -9,7 +9,7 @@
     <p><strong>Minimum Payment:</strong> ${{ card.min_payment }}</p>
     <p><strong>Status:</strong> {{ "Paid" if card.paid else "Not Paid" }}</p>
 
-    <h2>Update Card Details</h2>
+    <h2>Update payment Details</h2>
     <form action="/update_card/{{ card_id }}" method="POST">
         <label for="due_date">New Due Date:</label>
         <input type="date" id="due_date" name="due_date" value="{{ card.due_date }}" required>
