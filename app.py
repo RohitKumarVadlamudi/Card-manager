@@ -2,15 +2,6 @@ from flask import Flask, render_template, request
 
 app= Flask(__name__)
 
-@app.route('/')
-
-def home:
-	return "Welcome to credit card manager"
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
 #card details
 
 cards = [
@@ -22,6 +13,20 @@ cards = [
 ]
 
 
+@app.route('/')
+
+def home():
+	return "Welcome to credit card manager"
+
+@app.route('/card/<int:card_id>')
+def card_details(card_id):
+    card = cards[card_id]
+    return render_template('card_details.html', card=card)
+
+
 @app.route('/cards')
-def card_list:
-	render_template('cards.html', cards=cards)
+def card_list():
+	return render_template('cards.html', cards=cards)
+
+if __name__ == '__main__':
+    app.run(debug=True)
