@@ -8,9 +8,10 @@
     <ul>
         {% for card in cards %}
             <li>
-                <a href="/card/{{ loop.index0 }}">{{ card.name }} - Due Date: {{ card.due_date }} - Min Payment: ${{ card.min_payment }} - Status: {{ 'Paid' if card.paid else 'Not Paid' }}</a>
+                <a href="/card/{{ card.id }}">{{ card.name }} - Due Date: {{ card.due_date }} - Min Payment: ${{ card.minimum_payment }} - Status: {{ 'Paid' if card.paid else 'Not Paid' }}</a>
             </li>
         {% endfor %}
     </ul>
 </body>
 </html>
+
