@@ -16,10 +16,20 @@
         <input type="number" id="max_limit" name="max_limit" required><br><br>
 
         <label for="used">Used Amount:</label>
-        <input type="number" id="used" name="used" required><br><br>
+        <input type="number" step="0.01" id="used" name="used" required oninput="calculateRemaining()"><br><br>
 
         <label for="available">Available Amount:</label>
-        <input type="number" id="available" name="available" required><br><br>
+        <input type="number" step="0.01" id="available" name="available" readonly><br><br>
+
+        <script>
+            function calculateRemaining() {
+                let maxLimit = parseFloat(document.getElementById('max_limit').value) || 0;
+                let usedAmount = parseFloat(document.getElementById('used').value) || 0;
+                let remaining = maxLimit - usedAmount;
+                document.getElementById('available').value = remaining.toFixed(2);
+}
+        </script>
+
 
         <label for="due_date">Due Date:</label>
         <input type="date" id="due_date" name="due_date" required><br><br>
@@ -37,5 +47,8 @@
     </form>
 
     <a href="/cards">Back to Cards List</a>
+    <footer>
+        <p>A product by Rohit Vadlamudi</p>
+    </footer>
 </body>
 </html>

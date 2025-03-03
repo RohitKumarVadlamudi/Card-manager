@@ -11,9 +11,9 @@ db = SQLAlchemy(app)
 class Card(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    max_limit = db.Column(db.Integer, nullable=False)
-    used = db.Column(db.Integer, nullable=False)
-    available = db.Column(db.Integer, nullable=False)
+    max_limit = db.Column(db.Numeric(10,2), nullable=False)
+    used = db.Column(db.Numeric(10,2), nullable=False)
+    available = db.Column(db.Numeric(10,2), nullable=False)
     due_date = db.Column(db.Date, nullable=False)
     minimum_payment = db.Column(db.Numeric(10, 2), nullable=False)
     paid = db.Column(db.Boolean, default=False)
@@ -55,11 +55,11 @@ def update_card(card_id):
 def add_card():
     if request.method == 'POST':
         name = request.form['name']
-        max_limit = request.form['max_limit']
-        used = request.form['used']
-        available = request.form['available']
+        max_limit = float(request.form['max_limit'])
+        used = float(request.form['used'])
+        available = max_limit - used
         due_date = request.form['due_date']
-        minimum_payment = request.form['minimum_payment']
+        minimum_payment = float(request.form['minimum_payment'])
 
         new_card = Card(
             name=name,
