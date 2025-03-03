@@ -18,10 +18,10 @@ class Card(db.Model):
     minimum_payment = db.Column(db.Numeric(10, 2), nullable=False)
     paid = db.Column(db.Boolean, default=False)
 
-# Home route
+# Redirect home to the cards page
 @app.route('/')
 def home():
-    return "Welcome to credit card manager"
+    return redirect(url_for('card_list'))  # Redirects to /cards
 
 # Display all cards
 @app.route('/cards')
