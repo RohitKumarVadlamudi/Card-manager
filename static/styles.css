@@ -102,6 +102,17 @@ form {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+/* Reduce padding and margin at the top of the container */
+.card-details-container {
+    width: 100%;
+    max-width: 900px; /* Maximum width for the card details section */
+    margin: 10px auto; /* Reduce the margin at the top */
+    background-color: #ffffff;
+    padding: 20px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 .form-group {
     display: flex;
     flex-direction: row;
