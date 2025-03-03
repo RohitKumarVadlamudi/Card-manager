@@ -50,5 +50,32 @@ def update_card(card_id):
     db.session.commit()  # Save changes to DB
     return redirect(url_for('card_details', card_id=card_id))
 
+# Add a new card
+@app.route('/add_card', methods=['GET', 'POST'])
+def add_card():
+    if request.method == 'POST':
+        name = request.form['name']
+        max_limit = request.form['max_limit']
+        used = request.form['used']
+        available = request.form['available']
+        due_date = request.form['due_date']
+        minimum_payment = request.form['minimum_payment']
+
+        new_card = Card(
+            name=name,
+            max_limit=max_limit,
+            used=used,
+            available=available,
+            due_date=due_date,
+            minimum_payment=minimum_payment
+        )
+
+        db.session.add(new_card)
+        db.session.commit()
+
+        return redirect(url_for('card_list'))  # Redirect to cards list after saving
+
+    return render_template('add_card.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

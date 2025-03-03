@@ -5,13 +5,13 @@
 </head>
 <body>
     <h1>{{ card.name }} - Details</h1>
-    <h4>Limit: {{ card.Limit }}</h4>
+    <h4>Limit: ${{ card.max_limit }}</h4>
     <p><strong>Due Date:</strong> {{ card.due_date }}</p>
-    <p><strong>Minimum Payment:</strong> ${{ card.min_payment }}</p>
+    <p><strong>Minimum Payment:</strong> ${{ card.minimum_payment }}</p>
     <p><strong>Status:</strong> {{ "Paid" if card.paid else "Not Paid" }}</p>
 
     <h2>Update payment Details</h2>
-    <form action="/update_card/{{ card_id }}" method="POST">
+    <form action="/update_card/{{ card.id }}" method="POST">
         {% if error_message %}
             <p style="color: red;">{{ error_message }}</p>
         {% endif %}
@@ -20,7 +20,7 @@
         <br>
 
         <label for="min_payment">New Minimum payment:</label>
-        <input type="int" id="min_payment" name="min_payment" value="{{ card.min_payment }}" required>
+        <input type="number" id="min_payment" name="min_payment" value="{{ card.minimum_payment }}" required>
         <br>
 
         <label for="status">Payment Status:</label>

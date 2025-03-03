@@ -2,8 +2,13 @@
 <html>
 <head>
     <title>Card List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <div class="header">
+        <a href="/add_card" class="add-card-button">Add Card</a>
+    </div>
+
     <h1>All Credit Cards</h1>
     <ul>
         {% for card in cards %}
@@ -14,4 +19,3 @@
     </ul>
 </body>
 </html>
-

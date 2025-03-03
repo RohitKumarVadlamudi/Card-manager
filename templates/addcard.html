@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Card</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>Add New Credit Card</h1>
+
+    <form action="/add_card" method="POST">
+        <label for="name">Card Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="max_limit">Max Limit:</label>
+        <input type="number" id="max_limit" name="max_limit" required><br><br>
+
+        <label for="used">Used Amount:</label>
+        <input type="number" id="used" name="used" required><br><br>
+
+        <label for="available">Available Amount:</label>
+        <input type="number" id="available" name="available" required><br><br>
+
+        <label for="due_date">Due Date:</label>
+        <input type="date" id="due_date" name="due_date" required><br><br>
+
+        <label for="minimum_payment">Minimum Payment:</label>
+        <input type="number" id="minimum_payment" name="minimum_payment" step="0.01" required><br><br>
+
+        <label for="paid">Paid:</label>
+        <select id="paid" name="paid">
+            <option value="false">Not Paid</option>
+            <option value="true">Paid</option>
+        </select><br><br>
+
+        <button type="submit">Add Card</button>
+    </form>
+
+    <a href="/cards">Back to Cards List</a>
+</body>
+</html>
